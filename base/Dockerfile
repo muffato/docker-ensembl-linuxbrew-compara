@@ -16,7 +16,7 @@ RUN mkdir -p /repo \
     && git clone --branch release-1-6-9 --depth 1 https://github.com/bioperl/bioperl-run /repo/bioperl-run
 
 # Install their requirements (CPAN)
-RUN /repo/ensembl-hive/docker/setup_os.Ubuntu-16.04.sh
+RUN /repo/ensembl-hive/docker/setup_os.Ubuntu-16.04.sh \
     && /repo/ensembl-hive/docker/setup_cpan.Ubuntu-16.04.sh /repo/ensembl*
 
 # Setup the environment
