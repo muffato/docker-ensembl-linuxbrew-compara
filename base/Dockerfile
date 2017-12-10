@@ -23,3 +23,5 @@ RUN $HOME/repos/ensembl-hive/docker/setup_os.Ubuntu-16.04.sh \
 ENV PERL5LIB "$HOME/repos/ensembl/modules:$HOME/repos/ensembl-compara/modules:$HOME/repos/ensembl-variation/modules:$HOME/repos/ensembl-funcgen/modules:$HOME/repos/ensembl-io/modules:$HOME/repos/ensembl-vep/modules:$HOME/repos/ensembl-test/modules:$HOME/repos/ensembl-hive/modules:$HOME/repos/bioperl-live:$HOME/repos/bioperl-run/lib:$PERL5LIB"
 ENV PATH "$HOME/repos/ensembl-hive/scripts:$PATH"
 
+RUN pushd $HOME/repos/ensembl-hive && git checkout experimental/dswarm && popd
+
