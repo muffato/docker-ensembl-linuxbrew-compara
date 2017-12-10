@@ -11,7 +11,7 @@ RUN mkdir -p $HOME/repos \
     && git clone --depth 1 https://github.com/Ensembl/ensembl-vep.git $HOME/repos/ensembl-vep \
     && git clone --depth 1 https://github.com/Ensembl/ensembl-rest.git $HOME/repos/ensembl-rest \
     && git clone --depth 1 https://github.com/Ensembl/ensembl-test.git $HOME/repos/ensembl-test \
-    && git clone --depth 1 https://github.com/Ensembl/ensembl-hive.git $HOME/repos/ensembl-hive \
+    && git clone --branch master https://github.com/Ensembl/ensembl-hive.git $HOME/repos/ensembl-hive \
     && git clone --branch v1.6.x --depth 1 https://github.com/bioperl/bioperl-live $HOME/repos/bioperl-live \
     && git clone --branch release-1-6-9 --depth 1 https://github.com/bioperl/bioperl-run $HOME/repos/bioperl-run
 
