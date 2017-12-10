@@ -16,8 +16,8 @@ RUN mkdir -p $HOME/repos \
     && git clone --branch release-1-6-9 --depth 1 https://github.com/bioperl/bioperl-run $HOME/repos/bioperl-run
 
 # Install their requirements (CPAN)
-RUN $HOME/repos/ensembl-hive/docker/setup_os.Ubuntu-16.04.sh \
-    && $HOME/repos/ensembl-hive/docker/setup_cpan.Ubuntu-16.04.sh $HOME/repos/ensembl*
+RUN sudo $HOME/repos/ensembl-hive/docker/setup_os.Ubuntu-16.04.sh \
+    && sudo $HOME/repos/ensembl-hive/docker/setup_cpan.Ubuntu-16.04.sh $HOME/repos/ensembl*
 
 # Setup the environment
 ENV PERL5LIB "$HOME/repos/ensembl/modules:$HOME/repos/ensembl-compara/modules:$HOME/repos/ensembl-variation/modules:$HOME/repos/ensembl-funcgen/modules:$HOME/repos/ensembl-io/modules:$HOME/repos/ensembl-vep/modules:$HOME/repos/ensembl-test/modules:$HOME/repos/ensembl-hive/modules:$HOME/repos/bioperl-live:$HOME/repos/bioperl-run/lib:$PERL5LIB"
