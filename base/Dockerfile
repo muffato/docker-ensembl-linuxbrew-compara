@@ -2,7 +2,7 @@
 FROM muffato/ensembl-basic-dependencies-linuxbrew
 
 # Close the Ensembl repos
-ARG ENSEMBL_INSTALL_DIR /home/linuxbrew/repos
+ARG ENSEMBL_INSTALL_DIR=/home/linuxbrew/repos
 RUN mkdir -p $ENSEMBL_INSTALL_DIR \
     && git clone --depth 1 https://github.com/Ensembl/ensembl.git $ENSEMBL_INSTALL_DIR/ensembl \
     && git clone --depth 1 https://github.com/Ensembl/ensembl-compara.git $ENSEMBL_INSTALL_DIR/ensembl-compara \
