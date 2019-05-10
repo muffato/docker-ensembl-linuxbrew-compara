@@ -15,6 +15,9 @@ RUN mkdir -p $ENSEMBL_INSTALL_DIR \
 RUN sudo $ENSEMBL_INSTALL_DIR/ensembl-hive/docker/setup_os.Ubuntu-16.04.sh \
     && sudo $ENSEMBL_INSTALL_DIR/ensembl-hive/docker/setup_cpan.Ubuntu-16.04.sh $ENSEMBL_INSTALL_DIR/ensembl*
 
+# Install the Python dependencies
+RUN pip install --user -r https://raw.githubusercontent.com/Ensembl/python-requirements/master/compara/requirements.txt
+
 # Setup the environment
 ENV PERL5LIB "$ENSEMBL_INSTALL_DIR/ensembl/modules:$ENSEMBL_INSTALL_DIR/ensembl-compara/modules:$ENSEMBL_INSTALL_DIR/ensembl-test/modules:$ENSEMBL_INSTALL_DIR/ensembl-hive/modules:$ENSEMBL_INSTALL_DIR/bioperl-live:$ENSEMBL_INSTALL_DIR/bioperl-run/lib:$PERL5LIB"
 ENV PATH "$ENSEMBL_INSTALL_DIR/ensembl-hive/scripts:$PATH"
