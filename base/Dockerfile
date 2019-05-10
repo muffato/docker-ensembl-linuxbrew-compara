@@ -33,4 +33,7 @@ RUN ln -sf Blast.pm.example   $ENSEMBL_INSTALL_DIR/ensembl-analysis/modules/Bio/
 # Setup the environment
 ENV PERL5LIB "$ENSEMBL_INSTALL_DIR/ensembl/modules:$ENSEMBL_INSTALL_DIR/ensembl-io/modules:$ENSEMBL_INSTALL_DIR/ensembl-analysis/modules:$ENSEMBL_INSTALL_DIR/ensembl-compara/modules:$ENSEMBL_INSTALL_DIR/ensembl-test/modules:$ENSEMBL_INSTALL_DIR/ensembl-hive/modules:$ENSEMBL_INSTALL_DIR/bioperl-live:$ENSEMBL_INSTALL_DIR/bioperl-run/lib:$PERL5LIB"
 ENV PATH "$ENSEMBL_INSTALL_DIR/ensembl-hive/scripts:$PATH"
+ENV EHIVE_ROOT_DIR "$ENSEMBL_INSTALL_DIR/ensembl-hive"
+ENV ENSEMBL_CVS_ROOT_DIR "$ENSEMBL_INSTALL_DIR"
+ENV LINUXBREW_HOME "/home/linuxbrew/.linuxbrew"
 
