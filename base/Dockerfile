@@ -7,7 +7,7 @@ RUN mkdir -p $ENSEMBL_INSTALL_DIR \
     && git clone --depth 1 https://github.com/Ensembl/ensembl.git $ENSEMBL_INSTALL_DIR/ensembl \
     && git clone --depth 1 https://github.com/Ensembl/ensembl-compara.git $ENSEMBL_INSTALL_DIR/ensembl-compara \
     && git clone --depth 1 https://github.com/Ensembl/ensembl-test.git $ENSEMBL_INSTALL_DIR/ensembl-test \
-    && git clone --branch master --depth 1 https://github.com/Ensembl/ensembl-hive.git $ENSEMBL_INSTALL_DIR/ensembl-hive \
+    && git clone --depth 1 https://github.com/Ensembl/ensembl-hive.git $ENSEMBL_INSTALL_DIR/ensembl-hive \
     && git clone --branch v1.6.x --depth 1 https://github.com/bioperl/bioperl-live $ENSEMBL_INSTALL_DIR/bioperl-live \
     && git clone --branch release-1-6-9 --depth 1 https://github.com/bioperl/bioperl-run $ENSEMBL_INSTALL_DIR/bioperl-run
 
