@@ -1,7 +1,7 @@
 # Docker image with all necessary Homebrew and Ensembl taps, and the basic dependencies
 FROM muffato/ensembl-linuxbrew-basic-dependencies
 
-# Close the Ensembl repos
+# Clone the Ensembl repos
 ARG ENSEMBL_INSTALL_DIR=/home/linuxbrew/repos
 RUN mkdir -p $ENSEMBL_INSTALL_DIR \
     && git clone --depth 1 https://github.com/Ensembl/ensembl.git $ENSEMBL_INSTALL_DIR/ensembl \
