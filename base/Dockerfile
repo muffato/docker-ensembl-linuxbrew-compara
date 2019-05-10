@@ -13,9 +13,15 @@ RUN mkdir -p $ENSEMBL_INSTALL_DIR \
     && git clone --branch v1.6.x --depth 1 https://github.com/bioperl/bioperl-live $ENSEMBL_INSTALL_DIR/bioperl-live \
     && git clone --branch release-1-6-9 --depth 1 https://github.com/bioperl/bioperl-run $ENSEMBL_INSTALL_DIR/bioperl-run
 
-# Install their requirements (CPAN)
-RUN sudo $ENSEMBL_INSTALL_DIR/ensembl-hive/docker/setup_os.Ubuntu-16.04.sh \
-    && sudo $ENSEMBL_INSTALL_DIR/ensembl-hive/docker/setup_cpan.Ubuntu-16.04.sh $ENSEMBL_INSTALL_DIR/ensembl*
+# Install the system dependencies via brew
+RUN brew install curl sqlite3 graphviz
+
+# Install the Perl dependencies (CPAN)
+RUN brew install cpanminus \
+ && cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl \
+ && cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl-compara \
+ && cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl-test \
+ && cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl-hive
 
 # Install the Python dependencies
 RUN pip install --user -r https://raw.githubusercontent.com/Ensembl/python-requirements/master/compara/requirements.txt
