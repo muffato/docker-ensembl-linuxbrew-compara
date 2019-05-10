@@ -5,9 +5,11 @@ FROM muffato/ensembl-linuxbrew-basic-dependencies
 ARG ENSEMBL_INSTALL_DIR=/home/linuxbrew/repos
 RUN mkdir -p $ENSEMBL_INSTALL_DIR \
     && git clone --depth 1 https://github.com/Ensembl/ensembl.git $ENSEMBL_INSTALL_DIR/ensembl \
+    && git clone --depth 1 https://github.com/Ensembl/ensembl-io.git $ENSEMBL_INSTALL_DIR/ensembl-io \
     && git clone --depth 1 https://github.com/Ensembl/ensembl-compara.git $ENSEMBL_INSTALL_DIR/ensembl-compara \
     && git clone --depth 1 https://github.com/Ensembl/ensembl-test.git $ENSEMBL_INSTALL_DIR/ensembl-test \
     && git clone --depth 1 https://github.com/Ensembl/ensembl-hive.git $ENSEMBL_INSTALL_DIR/ensembl-hive \
+    && git clone --branch dev/hive_master --depth 1 https://github.com/Ensembl/ensembl-analysis.git $ENSEMBL_INSTALL_DIR/ensembl-analysis \
     && git clone --branch v1.6.x --depth 1 https://github.com/bioperl/bioperl-live $ENSEMBL_INSTALL_DIR/bioperl-live \
     && git clone --branch release-1-6-9 --depth 1 https://github.com/bioperl/bioperl-run $ENSEMBL_INSTALL_DIR/bioperl-run
 
@@ -19,6 +21,6 @@ RUN sudo $ENSEMBL_INSTALL_DIR/ensembl-hive/docker/setup_os.Ubuntu-16.04.sh \
 RUN pip install --user -r https://raw.githubusercontent.com/Ensembl/python-requirements/master/compara/requirements.txt
 
 # Setup the environment
-ENV PERL5LIB "$ENSEMBL_INSTALL_DIR/ensembl/modules:$ENSEMBL_INSTALL_DIR/ensembl-compara/modules:$ENSEMBL_INSTALL_DIR/ensembl-test/modules:$ENSEMBL_INSTALL_DIR/ensembl-hive/modules:$ENSEMBL_INSTALL_DIR/bioperl-live:$ENSEMBL_INSTALL_DIR/bioperl-run/lib:$PERL5LIB"
+ENV PERL5LIB "$ENSEMBL_INSTALL_DIR/ensembl/modules:$ENSEMBL_INSTALL_DIR/ensembl-io/modules:$ENSEMBL_INSTALL_DIR/ensembl-analysis/modules:$ENSEMBL_INSTALL_DIR/ensembl-compara/modules:$ENSEMBL_INSTALL_DIR/ensembl-test/modules:$ENSEMBL_INSTALL_DIR/ensembl-hive/modules:$ENSEMBL_INSTALL_DIR/bioperl-live:$ENSEMBL_INSTALL_DIR/bioperl-run/lib:$PERL5LIB"
 ENV PATH "$ENSEMBL_INSTALL_DIR/ensembl-hive/scripts:$PATH"
 
