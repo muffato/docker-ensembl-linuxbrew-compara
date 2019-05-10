@@ -26,6 +26,10 @@ RUN brew install cpanminus \
 # Install the Python dependencies
 RUN pip install --user -r https://raw.githubusercontent.com/Ensembl/python-requirements/master/compara/requirements.txt
 
+RUN ln -sf Blast.pm.example   $ENSEMBL_INSTALL_DIR/ensembl-analysis/modules/Bio/EnsEMBL/Analysis/Config/Blast.pm \
+ && ln -sf Compara.pm.example $ENSEMBL_INSTALL_DIR/ensembl-analysis/modules/Bio/EnsEMBL/Analysis/Config/Compara.pm \
+ && ln -sf General.pm.example $ENSEMBL_INSTALL_DIR/ensembl-analysis/modules/Bio/EnsEMBL/Analysis/Config/General.pm
+
 # Setup the environment
 ENV PERL5LIB "$ENSEMBL_INSTALL_DIR/ensembl/modules:$ENSEMBL_INSTALL_DIR/ensembl-io/modules:$ENSEMBL_INSTALL_DIR/ensembl-analysis/modules:$ENSEMBL_INSTALL_DIR/ensembl-compara/modules:$ENSEMBL_INSTALL_DIR/ensembl-test/modules:$ENSEMBL_INSTALL_DIR/ensembl-hive/modules:$ENSEMBL_INSTALL_DIR/bioperl-live:$ENSEMBL_INSTALL_DIR/bioperl-run/lib:$PERL5LIB"
 ENV PATH "$ENSEMBL_INSTALL_DIR/ensembl-hive/scripts:$PATH"
