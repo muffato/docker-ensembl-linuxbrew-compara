@@ -16,7 +16,8 @@ RUN mkdir -p $ENSEMBL_INSTALL_DIR \
 
 # Install the system dependencies via brew
 RUN brew install curl sqlite3 graphviz cpanminus \
- && rm -rf /home/linuxbrew/.cache/Homebrew/downloads/ /home/linuxbrew/.cache/Homebrew/*.bottle.*
+ && brew cleanup \
+ && rm -rf /home/linuxbrew/.cache/Homebrew
 
 # Install the Perl dependencies (CPAN)
 RUN cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl \
