@@ -6,5 +6,6 @@ RUN brew install ensembl/cask/compara-ncrnatrees \
  || brew install ensembl/cask/compara-ncrnatrees \
  || brew install ensembl/cask/compara-ncrnatrees \
  || brew install ensembl/cask/compara-ncrnatrees \
- && rm -rf /home/linuxbrew/.cache/Homebrew/downloads/ /home/linuxbrew/.cache/Homebrew/*.bottle.*
+ && brew cleanup \
+ && rm -rf /home/linuxbrew/.cache/Homebrew
 

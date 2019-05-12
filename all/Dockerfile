@@ -6,5 +6,6 @@ RUN brew install ensembl/cask/compara \
  || brew install ensembl/cask/compara \
  || brew install ensembl/cask/compara \
  || brew install ensembl/cask/compara \
- && rm -rf /home/linuxbrew/.cache/Homebrew/downloads/ /home/linuxbrew/.cache/Homebrew/*.bottle.*
+ && brew cleanup \
+ && rm -rf /home/linuxbrew/.cache/Homebrew
 

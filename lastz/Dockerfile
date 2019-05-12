@@ -4,5 +4,6 @@ FROM muffato/ensembl-linuxbrew-compara-base
 RUN brew install ensembl/cask/compara-lastz \
  || brew install ensembl/cask/compara-lastz \
  || brew install ensembl/cask/compara-lastz \
- && rm -rf /home/linuxbrew/.cache/Homebrew/downloads/ /home/linuxbrew/.cache/Homebrew/*.bottle.*
+ && brew cleanup \
+ && rm -rf /home/linuxbrew/.cache/Homebrew
 
