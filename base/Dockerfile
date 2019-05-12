@@ -15,17 +15,19 @@ RUN mkdir -p $ENSEMBL_INSTALL_DIR \
     && git clone --branch release-1-6-9 --depth 1 https://github.com/bioperl/bioperl-run $ENSEMBL_INSTALL_DIR/bioperl-run
 
 # Install the system dependencies via brew
-RUN brew install curl sqlite3 graphviz
+RUN brew install curl sqlite3 graphviz cpanminus \
+ && rm -rf /home/linuxbrew/.cache/Homebrew/downloads/ /home/linuxbrew/.cache/Homebrew/*.bottle.*
 
 # Install the Perl dependencies (CPAN)
-RUN brew install cpanminus \
- && cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl \
+RUN cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl \
  && cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl-compara \
  && cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl-test \
- && cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl-hive
+ && cpanm --installdeps --with-recommends --notest $ENSEMBL_INSTALL_DIR/ensembl-hive \
+ && rm -rf /home/linuxbrew/.cpan /home/linuxbrew/.cpanm
 
 # Install the Python dependencies
-RUN pip install --user -r https://raw.githubusercontent.com/Ensembl/python-requirements/master/compara/requirements.txt
+RUN pip install --user -r https://raw.githubusercontent.com/Ensembl/python-requirements/master/compara/requirements.txt \
+ && rm -rf /home/linuxbrew/.cache/pip
 
 RUN ln -sf Blast.pm.example   $ENSEMBL_INSTALL_DIR/ensembl-analysis/modules/Bio/EnsEMBL/Analysis/Config/Blast.pm \
  && ln -sf Compara.pm.example $ENSEMBL_INSTALL_DIR/ensembl-analysis/modules/Bio/EnsEMBL/Analysis/Config/Compara.pm \
