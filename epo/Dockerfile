@@ -5,5 +5,6 @@ RUN brew install ensembl/cask/compara-epo \
  || brew install ensembl/cask/compara-epo \
  || brew install ensembl/cask/compara-epo \
  || brew install ensembl/cask/compara-epo \
- || brew install ensembl/cask/compara-epo
+ || brew install ensembl/cask/compara-epo \
+ && rm -rf /home/linuxbrew/.cache/Homebrew/downloads/ /home/linuxbrew/.cache/Homebrew/*.bottle.*
 
