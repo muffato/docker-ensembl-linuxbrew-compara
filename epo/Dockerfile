@@ -1,11 +1,4 @@
 FROM muffato/ensembl-linuxbrew-compara-base
 
-# Run the install several times in case it is incomplete
-RUN brew install ensembl/cask/compara-epo \
- || brew install ensembl/cask/compara-epo \
- || brew install ensembl/cask/compara-epo \
- || brew install ensembl/cask/compara-epo \
- || brew install ensembl/cask/compara-epo \
- && brew cleanup \
- && rm -rf /home/linuxbrew/.cache/Homebrew
+RUN /home/linuxbrew/repos/install_cask.sh compara-epo
 
