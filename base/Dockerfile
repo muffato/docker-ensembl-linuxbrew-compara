@@ -34,7 +34,7 @@ RUN ln -sf Blast.pm.example   $ENSEMBL_INSTALL_DIR/ensembl-analysis/modules/Bio/
  && ln -sf Compara.pm.example $ENSEMBL_INSTALL_DIR/ensembl-analysis/modules/Bio/EnsEMBL/Analysis/Config/Compara.pm \
  && ln -sf General.pm.example $ENSEMBL_INSTALL_DIR/ensembl-analysis/modules/Bio/EnsEMBL/Analysis/Config/General.pm
 
-COPY --chown=linuxbrew.linuxbrew install_cask.sh $ENSEMBL_INSTALL_DIR/
+COPY --chown=linuxbrew:linuxbrew install_cask.sh $ENSEMBL_INSTALL_DIR/
 
 # Setup the environment
 ENV PERL5LIB "$ENSEMBL_INSTALL_DIR/ensembl/modules:$ENSEMBL_INSTALL_DIR/ensembl-io/modules:$ENSEMBL_INSTALL_DIR/ensembl-analysis/modules:$ENSEMBL_INSTALL_DIR/ensembl-compara/modules:$ENSEMBL_INSTALL_DIR/ensembl-test/modules:$ENSEMBL_INSTALL_DIR/ensembl-hive/modules:$ENSEMBL_INSTALL_DIR/bioperl-live:$ENSEMBL_INSTALL_DIR/bioperl-run/lib:$PERL5LIB"
